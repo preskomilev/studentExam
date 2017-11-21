@@ -1,20 +1,26 @@
-body
-{
-overflow-x:hidden;
-width:100%;
-font: 15px "Century Gothic", "Times Roman", sans-serif;
-background:#eee;
-min-height:550px;
-background-attachment:fixed;
+html {
+	height:100%;
 }
-.bg
-{
-min-height:540px;
+
+body {
+	height:100%;
+	width:100%;
+	font: 400 15px/1.4 'Open Sans',sans-serif;
+	background:#eee;
+	background-attachment:fixed;
+	display: flex;
+	flex-direction: column;
 }
-.bg1
-{
-background:url(../image/bg.jpg);
-min-height:535px;
+
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  background-color: #999999;
+}
+
+.bg {
+	min-height:540px;
+	margin-top: 50px;
 }
 
 @font-face {
@@ -27,124 +33,145 @@ min-height:535px;
     src: url('../fonts/gothics.ttf');
 	}
 
-.panel{
-border-color:#eee;
-margin:40px;
-padding:20px;
-font: 15px "Century Gothic", "Times Roman", sans-serif;
+.panel	{
+	border-color:#eee;
+	margin:40px;
+	padding:20px;
+	font: 15px "Century Gothic", "Times Roman", sans-serif;
 }
 
-.title
-{
-font-family:'typo';
+.title {
+	font-family:'typo';
 }
 
-.header
-{
-background:#202020;
-height:70px;
-}
-.logo
-{
-font-family:'typo';
-font-size:35px;
-color:#ffbb33;
-margin:15px;
+.header {
+	background:#202020;
+	/*height:70px;*/
 }
 
-.title1{
-font: 16px "Century Gothic", "Times Roman", sans-serif;
+.logo {
+	font-family:'typo';
+	font-size:35px;
+	color:#DC1D49;
+	margin:15px;
 }
-.title2{
-font-family: 'Ubuntu', sans-serif;
-font-size:20px;
+
+.title1 {
+	font: 16px "Century Gothic", "Times Roman", sans-serif;
+}
+.title2 {
+	font-family: 'Ubuntu', sans-serif;
+	font-size:20px;
 }
 
 
-.sub1
-{
-width:90px;
-color:#202020;
-background:orange;
-font-size:15px;
-height:35px;
-margin:20px;
-padding:10px;
-width:100px;
+.sub1 {
+	width:90px;
+	color:#202020;
+	background:orange;
+	font-size:15px;
+	height:35px;
+	margin:20px;
+	padding:10px;
+	width:100px;
 }
 
 
-.sub
-{
-width:100%;
-background-color:#9acd32;
-font-size:20px;
-padding:2px;
-margin-top:15px;
-margin-right:20px;
-}
-.sub:hover
-{
-color:#fff;
+.sub {
+	width:100%;
+	background-color:#9acd32;
+	font-size:20px;
+	padding:2px;
+	margin-top:15px;
+	margin-right:20px;
 }
 
-.footer
-{
-font-size:15px;
-text-align:center;
-border-top:1px solid;
-border-color:#323232;
-background-color:#202020;
-}
-.footer a
-{
-margin:25px;
-color:orange;
-text-decoration:none;
-font: 15px "Century Gothic", "Times Roman", sans-serif;
-
-}
-.footer a:hover
-{
-text-decoration:none;
-color:#9acd32;
-border-top:2px solid;
-border-color:orange;
-
+.sub:hover {
+	color:#fff;
 }
 
-.box
-{
-padding:9px;
-}
-hr{
-color:#000000;
-}
-.top
-{
-margin-top:20px;
-}
-.log1
-{
-font: 15px 'Ubuntu', sans-serif;
-color:orange;
-margin-left:10px;
+.footer {
+	font-size:15px;
+	text-align:center;
+	border-top:1px solid;
+	border-color:#323232;
+	background-color:#292C2F;
 }
 
-.log
-{
-margin:10px;
-margin-right:60px;
-margin-left:5px;
-color:orange;
-text-decoration:none;
-font-size:20px;
-font-size:15px;
+.footer a {
+	margin:25px;
+	color: #ffffff;
+	/*color: #DC1D49;*/
+	text-decoration:none;
+	font: 15px "Century Gothic", "Times Roman", sans-serif;
 }
-.log:hover
-{
-color:#9acd32;
-border-top:2px solid;
-border-color:orange;
-text-decoration:none;
+
+.footer a:hover {
+	text-decoration:none;
+	border-top:2px solid;
+	border-color: #ffffff;
+/*	border-color: #DC1D49;*/
+}
+
+.box {
+	padding:12px;
+}
+
+hr {
+	color:#000000;
+}
+
+.top {
+	margin-top:20px;
+}
+
+.log1 {
+	font: 15px 'Ubuntu', sans-serif;
+	color:orange;
+	margin-left:10px;
+}
+
+.log {
+	margin:10px;
+	margin-right:60px;
+	margin-left:5px;
+	color:orange;
+	text-decoration:none;
+	font-size:20px;
+	font-size:15px;
+}
+
+.log:hover {
+	color:#9acd32;
+	border-top:2px solid;
+	border-color:orange;
+	text-decoration:none;
+}
+
+header {
+	flex: 0 0 auto;
+	background-color: #292C2F;
+}
+
+.main-content {
+	flex: 1 0 auto;
+	background:url(../image/bg3.jpg);
+
+	display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+}
+
+footer {
+	flex: 0 0 auto;
+	height: 48px;
 }
