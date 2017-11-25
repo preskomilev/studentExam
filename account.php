@@ -33,14 +33,14 @@ include_once 'dbConnection.php';
  <?php
  include_once 'dbConnection.php';
 session_start();
-  if(!(isset($_SESSION['email']))){
+  if(!(isset($_SESSION['faculty_num']))){
 header("location:index.php");
 
 }
 else
 {
 $name = $_SESSION['name'];
-$email=$_SESSION['email'];
+$faculty_num=$_SESSION['faculty_num'];
 
 include_once 'dbConnection.php';
 echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="account.php?q=1" class="log log1">'.$name.'</a>&nbsp;|&nbsp;<a href="logout.php?q=account.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
@@ -87,7 +87,7 @@ while($row = mysqli_fetch_array($result)) {
 	$sahi = $row['sahi'];
     $time = $row['time'];
 	$eid = $row['eid'];
-$q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$email'" )or die('Error98');
+$q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND faculty_num='$faculty_num'" )or die('Error98');
 $rowcount=mysqli_num_rows($q12);	
 if($rowcount == 0){
 	echo '<tr><td>'.$c++.'</td><td>'.$title.'</td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$time.'&nbsp;min</td>
@@ -156,7 +156,7 @@ echo'<br /><button type="submit" class="btn btn-primary"><span class="glyphicon 
 if(@$_GET['q']== 'result' && @$_GET['eid']) 
 {
 $eid=@$_GET['eid'];
-$q=mysqli_query($con,"SELECT * FROM history WHERE eid='$eid' AND email='$email' " )or die('Error157');
+$q=mysqli_query($con,"SELECT * FROM history WHERE eid='$eid' AND faculty_num='$faculty_num' " )or die('Error157');
 echo  '<div class="panel">
 <center><h1 class="title" style="color:#660033">Result</h1><center><br /><table class="table table-striped title1" style="font-size:20px;font-weight:1000;">';
 
@@ -171,7 +171,7 @@ echo '<tr style="color:#66CCFF"><td>Total Questions</td><td>'.$qa.'</td></tr>
 	  <tr style="color:red"><td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td><td>'.$w.'</td></tr>
 	  <tr style="color:#66CCFF"><td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
 }
-$q=mysqli_query($con,"SELECT * FROM rank WHERE  email='$email' " )or die('Error157');
+$q=mysqli_query($con,"SELECT * FROM rank WHERE  faculty_num='$faculty_num' " )or die('Error157');
 while($row=mysqli_fetch_array($q) )
 {
 $s=$row['score'];

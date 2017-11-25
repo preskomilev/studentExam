@@ -37,12 +37,10 @@
           return false;
         }
         
-        var x = document.forms["form"]["email"].value;
-        var atpos = x.indexOf("@");
-        var dotpos = x.lastIndexOf(".");
-        
-        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
-          alert("Not a valid e-mail address.");
+        var x = document.forms["form"]["faculty_num"].value;
+
+        if (x == null || x == "") {
+          alert("Faculty number must be filled out.");
           return false;
         }
         
@@ -95,9 +93,9 @@
                 <fieldset>
                   <!-- Text input-->
                   <div class="form-group">
-                    <label class="col-md-3 control-label" for="email"></label>  
+                    <label class="col-md-3 control-label" for="faculty_num"></label>  
                     <div class="col-md-6">
-                      <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email">  
+                      <input id="faculty_num" name="faculty_num" placeholder="Enter your faculty_num-id" class="form-control input-md" type="faculty_num">  
                     </div>
                   </div>
 
@@ -139,9 +137,9 @@
               </div>
 
               <div class="form-group">
-                <!--  <label class="col-md-12 control-label title1" for="email"></label> -->
+                <!--  <label class="col-md-12 control-label title1" for="faculty_num"></label> -->
                 <div class="col-md-12">
-                  <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email">  
+                  <input id="faculty_num" name="faculty_num" placeholder="Enter your faculty_num-id" class="form-control input-md" type="faculty_num">  
                 </div>
               </div>
 

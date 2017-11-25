@@ -154,13 +154,13 @@ echo '</table></div>';}
 
 $result = mysqli_query($con,"SELECT * FROM user") or die('Error');
 echo  '<div class="panel"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Name</b></td><td><b>Email</b></td><td></td></tr>';
+<tr><td><b>S.N.</b></td><td><b>Name</b></td><td><b>faculty_num</b></td><td></td></tr>';
 $c=1;
 while($row = mysqli_fetch_array($result)) {
 	$name = $row['name'];
-    $email = $row['email'];
+    $faculty_num = $row['faculty_num'];
 
-	echo '<tr><td>'.$c++.'</td><td>'.$name.'</td><td>'.$email.'</td><td><a title="Delete User" href="update.php?demail='.$email.'"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td></tr>';
+	echo '<tr><td>'.$c++.'</td><td>'.$name.'</td><td>'.$faculty_num.'</td><td><a title="Delete User" href="update.php?dfaculty_num='.$faculty_num.'"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td></tr>';
 }
 $c=0;
 echo '</table></div>';
