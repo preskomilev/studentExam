@@ -1,37 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html;"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>NETCAMP || DASHBOARD </title>
-<link  rel="stylesheet" href="css/bootstrap.min.css"/>
- <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
- <link rel="stylesheet" href="css/main.css">
- <link  rel="stylesheet" href="css/font.css">
- <script src="js/jquery.js" type="text/javascript"></script>
+  <title>NETCAMP || DASHBOARD </title>
+  <link  rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
+  <link rel="stylesheet" href="css/main.css">
+  <link  rel="stylesheet" href="css/font.css">
+  <script src="js/jquery.js" type="text/javascript"></script>
 
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
  	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 
-<script>
-$(function () {
-    $(document).on( 'scroll', function(){
-        console.log('scroll top : ' + $(window).scrollTop());
-        if($(window).scrollTop()>=$(".logo").height())
-        {
-             $(".navbar").addClass("navbar-fixed-top");
-        }
+  <script>
+    $(function () {
+      $(document).on( 'scroll', function(){
+          console.log('scroll top : ' + $(window).scrollTop());
+          if($(window).scrollTop()>=$(".logo").height())
+          {
+               $(".navbar").addClass("navbar-fixed-top");
+          }
 
-        if($(window).scrollTop()<$(".logo").height())
-        {
-             $(".navbar").removeClass("navbar-fixed-top");
-        }
+          if($(window).scrollTop()<$(".logo").height())
+          {
+               $(".navbar").removeClass("navbar-fixed-top");
+          }
+      });
     });
-});</script>
+  </script>
+
 </head>
 
-<body  style="background:#eee;">
+<body style="background:#eee;">
 <div class="header">
 <div class="row">
 <div class="col-lg-6">
