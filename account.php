@@ -194,8 +194,6 @@ echo '</table></div>';
 <div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#developers">Developers</a>
 </div>
-<div class="col-md-3 box">
-<a href="feedback.php" target="_blank">Feedback</a></div></div>
 <!-- Modal For Developers-->
 <div class="modal fade title1" id="developers">
   <div class="modal-dialog">

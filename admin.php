@@ -1,22 +1,22 @@
 <?php
 include_once 'dbConnection.php';
 $ref=@$_GET['q'];
-$email = $_POST['uname'];
+$faculty_num = $_POST['uname'];
 $password = $_POST['password'];
 
-$email = stripslashes($email);
-$email = addslashes($email);
+$faculty_num = stripslashes($faculty_num);
+$faculty_num = addslashes($faculty_num);
 $password = stripslashes($password); 
 $password = addslashes($password);
-$result = mysqli_query($con,"SELECT email FROM admin WHERE email = '$email' and password = '$password'") or die('Error');
+$result = mysqli_query($con,"SELECT faculty_num FROM admin WHERE faculty_num = '$faculty_num' and password = '$password'") or die('Error');
 $count=mysqli_num_rows($result);
 if($count==1){
 session_start();
-if(isset($_SESSION['email'])){
+if(isset($_SESSION['faculty_num'])){
 session_unset();}
 $_SESSION["name"] = 'Admin';
 $_SESSION["key"] ='sunny7785068889';
-$_SESSION["email"] = $email;
+$_SESSION["faculty_num"] = $faculty_num;
 header("location:dash.php?q=0");
 }
 else header("location:$ref?w=Warning : Access denied");

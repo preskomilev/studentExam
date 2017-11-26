@@ -179,17 +179,18 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="col-md-3 box">
+      <!-- <div class="col-md-3 box">
         <a href="#" target="_blank">About us</a>
+      </div> -->
+      <div class="col-md-12 box">
+        <a href="#" data-toggle="modal" data-target="#login">Admin Login</a>
       </div>
-      <div class="col-md-3 box">
-        <a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
-      <div class="col-md-3 box">
+      <!-- <div class="col-md-3 box">
         <a href="#" data-toggle="modal" data-target="#developers">Developers</a>
-      </div>
-      <div class="col-md-3 box">
+      </div> -->
+      <!-- <div class="col-md-3 box">
         <a href="feedback.php" target="_blank">Feedback</a>
-      </div>
+      </div> -->
     </div>
   </footer>
 
