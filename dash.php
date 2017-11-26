@@ -34,28 +34,36 @@
 
 </head>
 
-<body style="background:#eee;">
-<div class="header">
-<div class="row">
-<div class="col-lg-6">
-<span class="logo">Test Your Skill</span></div>
-<?php
- include_once 'dbConnection.php';
-session_start();
-$faculty_num=$_SESSION['faculty_num'];
-  if(!(isset($_SESSION['faculty_num']))){
-header("location:index.php");
+<body>
+  <!-- <header>
+    <div class="row">
+    <div class="col-lg-12">
+    
+    <?php
+     include_once 'dbConnection.php';
+    session_start();
+    $faculty_num=$_SESSION['faculty_num'];
+      if(!(isset($_SESSION['faculty_num']))){
+    header("location:index.php");
 
-}
-else
-{
-$name = $_SESSION['name'];
+    }
+    else
+    {
+    $name = $_SESSION['name'];
 
-include_once 'dbConnection.php';
-echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="account.php" class="log log1">'.$name.'</a>&nbsp;|&nbsp;<a href="logout.php?q=account.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
-}?>
+    include_once 'dbConnection.php';
+    echo '
+        <span class="pull-right"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Hello, '.$name.'</span>
+        <a class="pull-right btn" href="logout.php?q=account.php">
+        <span class="glyphicon glyphicon-log-out"></span> <button type="button" class="btn btn-primary btn-md"> Logout</button>
+      </a>
+    </span>
+    </span>';
+    }?>
 
-</div></div>
+    </div>
+
+  </header> -->
 <!-- admin start-->
 
 <!--navigation menu-->
@@ -69,13 +77,13 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="dash.php?q=0"><b>Dashboard</b></a>
+      <a class="navbar-brand" href="dash.php?q=1"><b>Dashboard</b></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li <?php if(@$_GET['q']==0) echo'class="active"'; ?>><a href="dash.php?q=1">User<span class="sr-only">(current)</span></a></li>
-		<li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="dash.php?q=2">Ranking</a></li>
+		    <li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="dash.php?q=2">Ranking</a></li>
         <li class="dropdown <?php if(@$_GET['q']==4 || @$_GET['q']==5) echo'active"'; ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quiz<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -84,7 +92,29 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
           </ul>
         </li>
       </ul>
-          </div><!-- /.navbar-collapse -->
+
+      <div class="nav navbar-nav navbar-right">
+
+        <?php
+          include_once 'dbConnection.php';
+          $faculty_num=$_SESSION['faculty_num'];
+          if(!(isset($_SESSION['faculty_num']))){
+            header("location:index.php");
+          }
+          else
+          {
+            $name = $_SESSION['name'];
+            include_once 'dbConnection.php';
+            echo '
+              <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Здравей, '.$name.'</a>';
+          }
+        ?>
+
+        <a href="logout.php?q=account.php" class="navbar-brand"><b><span class="glyphicon glyphicon-log-out"></span> Излизане</b></a>
+      </div>
+
+    </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>
 <!--navigation menu closed-->
@@ -101,7 +131,7 @@ if(@$_GET['q']== 2)
 $q=mysqli_query($con,"SELECT * FROM rank  ORDER BY score DESC " )or die('Error223');
 echo  '<div class="panel title">
 <table class="table table-striped title1" >
-<tr style="color:red"><td><b>Rank</b></td><td><b>Name</b></td><td><b>Score</b></td></tr>';
+<tr><td><b>Rank</b></td><td><b>Name</b></td><td><b>Score</b></td></tr>';
 $c=0;
 while($row=mysqli_fetch_array($q) )
 {
@@ -115,7 +145,7 @@ $name=$row['name'];
 // $college=$row['college'];
 }
 $c++;
-echo '<tr><td style="color:#99cc32"><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$s.'</td><td>';
+echo '<tr><td><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$s.'</td><td>';
 }
 echo '</table></div>';}
 
@@ -128,7 +158,7 @@ echo '</table></div>';}
 
 $result = mysqli_query($con,"SELECT * FROM user") or die('Error');
 echo  '<div class="panel"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Name</b></td><td><b>faculty_num</b></td><td></td></tr>';
+<tr><td><b>Number</b></td><td><b>Name</b></td><td><b>Faculty number</b></td><td><b>Delete</b></td></tr>';
 $c=1;
 while($row = mysqli_fetch_array($result)) {
 	$name = $row['name'];
@@ -198,16 +228,6 @@ echo '
     
   </div>
 </div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-12 control-label" for="tag"></label>  
-  <div class="col-md-12">
-  <input id="tag" name="tag" placeholder="Enter #tag which is used for searching" class="form-control input-md" type="text">
-    
-  </div>
-</div>
-
 
 <!-- Text input-->
 <div class="form-group">
@@ -324,7 +344,7 @@ while($row = mysqli_fetch_array($result)) {
     $time = $row['time'];
 	$eid = $row['eid'];
 	echo '<tr><td>'.$c++.'</td><td>'.$title.'</td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$time.'&nbsp;min</td>
-	<td><b><a href="update.php?q=rmquiz&eid='.$eid.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Remove</b></span></a></b></td></tr>';
+	<td><b><a href="update.php?q=rmquiz&eid='.$eid.'" class="pull-right btn btn-danger style="margin:0px"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Remove</b></span></a></b></td></tr>';
 }
 $c=0;
 echo '</table></div>';

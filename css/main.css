@@ -37,7 +37,6 @@ body {
 	border-color:#eee;
 	margin:40px;
 	padding:20px;
-	font: 15px "Century Gothic", "Times Roman", sans-serif;
 }
 
 .title {
@@ -174,4 +173,10 @@ header {
 footer {
 	flex: 0 0 auto;
 	height: 48px;
+}
+
+.ver-text {
+	min-height: 20px;
+  	display: inline-flex;
+  	align-items: center;
 }

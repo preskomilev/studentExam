@@ -24,7 +24,9 @@
       
       function validateForm() {
         
-        var y = document.forms["form"]["name"].value;	var letters = /^[A-Za-z]+$/;
+        var y = document.forms["form"]["name"].value;	
+        var letters = /^[A-Za-z]+$/;
+        var numbers = /^\d+$/;
         
         if (y == null || y == "") {
           alert("Name must be filled out.");
@@ -40,8 +42,10 @@
         
         var x = document.forms["form"]["faculty_num"].value;
 
-        if (x == null || x == "") {
-          alert("Faculty number must be filled out.");
+        window.alert(numbers.text(x));
+
+        if (x == null || x == "" || !numbers.test(x)) {
+          alert("Faculty number must be filled out or have to be only with numbers.");
           return false;
         }
         
@@ -64,6 +68,11 @@
           return false;
         }
 
+        if (errors.length > 0) {
+          reportErrors(errors);
+          return false;
+        }
+
       }
 
     </script>
@@ -79,6 +88,9 @@
         <a href="#" class="pull-right btn" data-toggle="modal" data-target="#myModal">
           <button type="button" class="btn btn-primary btn-md">Log in</button>
         </a>
+        <a href="#" class="pull-right btn" data-toggle="modal" data-target="#login">
+          <button type="button" class="btn btn-primary btn-md">Admin Log in</button>
+        </a>
       </div>
 
     <!--sign in modal start-->
@@ -87,7 +99,7 @@
           <div class="modal-content title1">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title title1"><span style="color:orange">Log In</span></h4>
+              <h4 class="modal-title title1"><span>Log In</span></h4>
             </div>
             <div class="modal-body">
               <form class="form-horizontal" action="login.php?q=index.php" method="POST">
@@ -96,7 +108,7 @@
                   <div class="form-group">
                     <label class="col-md-3 control-label" for="faculty_num"></label>  
                     <div class="col-md-6">
-                      <input id="faculty_num" name="faculty_num" placeholder="Enter your faculty_num-id" class="form-control input-md" type="faculty_num">  
+                      <input id="faculty_num" name="faculty_num" placeholder="Enter your faculty number" class="form-control input-md" type="faculty_num">  
                     </div>
                   </div>
 
@@ -104,7 +116,7 @@
                   <div class="form-group">
                     <label class="col-md-3 control-label" for="password"></label>
                     <div class="col-md-6">
-                      <input id="password" name="password" placeholder="Enter your Password" class="form-control input-md" type="password">
+                      <input id="password" name="password" placeholder="Enter your password" class="form-control input-md" type="password">
                     </div>
                   </div>
 
@@ -133,28 +145,28 @@
               <div class="form-group">
                 <!--  <label class="col-md-12 control-label" for="name"></label>   -->
                 <div class="col-md-12">
-                  <input id="name" name="name" placeholder="Enter your name" class="form-control input-md" type="text">
+                  <input id="name" name="name" placeholder="Enter name" class="form-control input-md" type="text">
                 </div>
               </div>
 
               <div class="form-group">
                 <!--  <label class="col-md-12 control-label title1" for="faculty_num"></label> -->
                 <div class="col-md-12">
-                  <input id="faculty_num" name="faculty_num" placeholder="Enter your faculty_num-id" class="form-control input-md" type="faculty_num">  
+                  <input id="faculty_num" name="faculty_num" placeholder="Enter faculty number" class="form-control input-md" type="faculty_num">  
                 </div>
               </div>
 
               <div class="form-group">
                <!--  <label class="col-md-12 control-label" for="password"></label> -->
                 <div class="col-md-12">
-                  <input id="password" name="password" placeholder="Enter your password" class="form-control input-md" type="password">
+                  <input id="password" name="password" placeholder="Enter password" class="form-control input-md" type="password">
                 </div>
               </div>
 
               <div class="form-group">
                 <!-- <label class="col-md-12control-label" for="cpassword"></label> -->
                 <div class="col-md-12">
-                  <input id="cpassword" name="cpassword" placeholder="Conform Password" class="form-control input-md" type="password">
+                  <input id="cpassword" name="cpassword" placeholder="Confirm password" class="form-control input-md" type="password">
                 </div>
               </div>
         
@@ -178,22 +190,23 @@
       </div><!--container end-->
   </section>
 
-  <footer class="footer">
+
+ <!--  <footer class="footer">
     <div class="container">
-      <!-- <div class="col-md-3 box">
+      <div class="col-md-3 box">
         <a href="#" target="_blank">About us</a>
-      </div> -->
+      </div> 
       <div class="col-md-12 box">
         <a href="#" data-toggle="modal" data-target="#login">Admin Login</a>
       </div>
-      <!-- <div class="col-md-3 box">
+      <div class="col-md-3 box">
         <a href="#" data-toggle="modal" data-target="#developers">Developers</a>
-      </div> -->
-      <!-- <div class="col-md-3 box">
+      </div> 
+      <div class="col-md-3 box">
         <a href="feedback.php" target="_blank">Feedback</a>
-      </div> -->
+      </div>
     </div>
-  </footer>
+  </footer> -->
 
     <!--Footer start-->
     <!-- <div class="row footer">
@@ -242,25 +255,34 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">LOGIN</span></h4>
+          <h4 class="modal-title"><span>LOGIN</span></h4>
         </div>
         <div class="modal-body title1">
     <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-    <form role="form" method="post" action="admin.php?q=index.php">
-    <div class="form-group">
-    <input type="text" name="uname" maxlength="20"  placeholder="Admin user id" class="form-control"/> 
-    </div>
-    <div class="form-group">
-    <input type="password" name="password" maxlength="15" placeholder="Password" class="form-control"/>
-    </div>
-    <div class="form-group" align="center">
-    <input type="submit" name="login" value="Login" class="btn btn-primary" />
+    <form role="form" class="form-horizontal" method="post" action="admin.php?q=index.php">
+      <div class="fieldset">
+      <div class="form-group">
+        <input type="text" name="uname" maxlength="20"  placeholder="Admin user id" class="form-control"/> 
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" maxlength="15" placeholder="Password" class="form-control"/>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" name="login" value="Login" class="btn btn-primary">Log in</button>
+      </div>
+     <!--  <div class="form-group" align="center">
+        <input type="submit" name="login" value="Login" class="btn btn-primary" />
+      </div> -->
     </div>
     </form>
-    </div><div class="col-md-3"></div></div>
-          </div>
+    </div><div class="col-md-3"></div>
+
+  </div>
+    </div>
           <!--<div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>-->

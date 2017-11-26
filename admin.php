@@ -17,7 +17,7 @@ session_unset();}
 $_SESSION["name"] = 'Admin';
 $_SESSION["key"] ='sunny7785068889';
 $_SESSION["faculty_num"] = $faculty_num;
-header("location:dash.php?q=0");
+header("location:dash.php?q=1");
 }
 else header("location:$ref?w=Warning : Access denied");
 ?>

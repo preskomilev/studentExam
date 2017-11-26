@@ -28,7 +28,7 @@ header("location:account.php?q=1");
 }
 else
 {
-header("location:index.php?q7=Email Already Registered!!!");
+header("location:index.php?q7=Faculty number is already registered !");
 }
 ob_end_flush();
 ?>
