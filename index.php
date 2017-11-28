@@ -86,7 +86,7 @@
   <div class="row">
       <div class="col-lg-12">
         <a href="#" class="pull-right btn" data-toggle="modal" data-target="#myModal">
-          <button type="button" class="btn btn-primary btn-md">Log in</button>
+          <button type="button" class="btn btn-primary btn-md">Student Log in</button>
         </a>
         <a href="#" class="pull-right btn" data-toggle="modal" data-target="#login">
           <button type="button" class="btn btn-primary btn-md">Admin Log in</button>
@@ -96,10 +96,10 @@
     <!--sign in modal start-->
       <div class="modal fade" id="myModal">
         <div class="modal-dialog">
-          <div class="modal-content title1">
+          <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title title1"><span>Log In</span></h4>
+              <h4 class="modal-title title1"><span>Student Log In</span></h4>
             </div>
             <div class="modal-body">
               <form class="form-horizontal" action="login.php?q=index.php" method="POST">
@@ -131,6 +131,7 @@
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
+	  
     <!--sign in modal closed-->
     </div><!--header row closed-->
   </header>
@@ -178,12 +179,13 @@
 
               ?>
         
-              <div class="form-group">
+              <div class="form-group" style="margin-right: 0px;">
                 <label class="col-md-12 control-label" for=""></label>
-                <div class="col-md-12"> 
-                  <input  type="submit" value="Sign up" class="btn btn-primary"/>
+                <div class="pull-right" class="col-md-12"> 
+                  <input type="submit" value="Sign up" class="btn btn-primary"/>
                 </div>
               </div>
+				
             </fieldset>
           </form>
         </div><!--col-md-6 end-->
@@ -252,44 +254,36 @@
   <!--Modal for admin login-->
     <div class="modal fade" id="login">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title"><span>LOGIN</span></h4>
-        </div>
-        <div class="modal-body title1">
-    <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-    <form role="form" class="form-horizontal" method="post" action="admin.php?q=index.php">
-      <div class="fieldset">
-      <div class="form-group">
-        <input type="text" name="uname" maxlength="20"  placeholder="Admin user id" class="form-control"/> 
-      </div>
-      <div class="form-group">
-        <input type="password" name="password" maxlength="15" placeholder="Password" class="form-control"/>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" name="login" value="Login" class="btn btn-primary">Log in</button>
-      </div>
-     <!--  <div class="form-group" align="center">
-        <input type="submit" name="login" value="Login" class="btn btn-primary" />
-      </div> -->
-    </div>
-    </form>
-    </div><div class="col-md-3"></div>
-
-  </div>
-    </div>
-          <!--<div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>-->
-        </div><!-- /.modal-content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title"><span>Admin Log In</span></h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" class="form-horizontal" method="post" action="admin.php?q=index.php">
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3"></label>
+							<div class="col-md-6">
+								<input type="text" name="uname" maxlength="20"  placeholder="Admin user id" class="form-control input-md"/>
+							</div>
+						</div>
+						<div class="form-group">
+						<label class="col-md-3"></label>
+							<div class="col-md-6">
+								<input type="password" name="password" maxlength="15" placeholder="Password" class="form-control input-md"/>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" name="login" value="Login" class="btn btn-primary">Log in</button>
+						</div>
+					<fieldset>
+				</form>
+			</div>
+		</div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
+	
 </body>
 </html>

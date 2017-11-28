@@ -85,11 +85,11 @@
         <li <?php if(@$_GET['q']==0) echo'class="active"'; ?>><a href="dash.php?q=1">User<span class="sr-only">(current)</span></a></li>
 		    <li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="dash.php?q=2">Ranking</a></li>
         <li class="dropdown <?php if(@$_GET['q']==4 || @$_GET['q']==5) echo'active"'; ?>">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quiz<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exam<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="dash.php?q=4">Add Quiz</a></li>
-            <li><a href="dash.php?q=8">Preview Quiz</a></li>
-            <li><a href="dash.php?q=5">Remove Quiz</a></li>
+            <li><a href="dash.php?q=4">Add Exam</a></li>
+            <li><a href="dash.php?q=8">Preview Exam</a></li>
+            <li><a href="dash.php?q=5">Remove Exam</a></li>
           </ul>
         </li>
       </ul>
@@ -107,7 +107,7 @@
             $name = $_SESSION['name'];
             include_once 'dbConnection.php';
             echo '
-              <a href="account.php?q=1" class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Здравей, '.$name.'</a>';
+              <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Здравей, '.$name.'</a>';
           }
         ?>
 
@@ -163,12 +163,13 @@ if(@$_GET['q']==2)
 $q=mysqli_query($con,"SELECT * FROM rank  ORDER BY score DESC " )or die('Error223');
 echo  '<div class="panel title">
 <table class="table table-striped title1" >
-<tr><td><b>Rank</b></td><td><b>Name</b></td><td><b>Score</b></td></tr>';
+<tr><td><b>Rank</b></td><td><b>Name</b></td><td><b>Score</b></td><td><b>Time</b></td></tr>';
 $c=0;
 while($row=mysqli_fetch_array($q) )
 {
 $e=$row['faculty_num'];
 $s=$row['score'];
+$t=$row['time'];
 $q12=mysqli_query($con,"SELECT * FROM user WHERE faculty_num='$e' " )or die('Error231');
 while($row=mysqli_fetch_array($q12) )
 {
@@ -177,7 +178,7 @@ $name=$row['name'];
 // $college=$row['college'];
 }
 $c++;
-echo '<tr><td><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$s.'</td><td>';
+echo '<tr><td><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$s.'</td><td>'.$t.'</td></tr>';
 }
 echo '</table></div>';}
 
@@ -190,13 +191,13 @@ echo '</table></div>';}
 
 $result = mysqli_query($con,"SELECT * FROM user") or die('Error');
 echo  '<div class="panel"><table class="table table-striped title1">
-<tr><td><b>Number</b></td><td><b>Name</b></td><td><b>Faculty number</b></td><td><b>Delete</b></td></tr>';
+<tr><td><b>Number</b></td><td><b>Name</b></td><td><b>Faculty number</b></td><td><b>Delete user</b></td></tr>';
 $c=1;
 while($row = mysqli_fetch_array($result)) {
 	$name = $row['name'];
     $faculty_num = $row['faculty_num'];
 
-	echo '<tr><td>'.$c++.'</td><td>'.$name.'</td><td>'.$faculty_num.'</td><td><a title="Delete User" href="update.php?dfaculty_num='.$faculty_num.'"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td></tr>';
+	echo '<tr><td>'.$c++.'</td><td>'.$name.'</td><td>'.$faculty_num.'</td><td><a href="update.php?dfaculty_num='.$faculty_num.'" class="btn btn-danger style="margin:0px"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Delete</b></span></b></a></td></tr>';
 }
 $c=0;
 echo '</table></div>';
@@ -204,12 +205,12 @@ echo '</table></div>';
 }?>
 <!--user end-->
 
-<!--add quiz start-->
+<!--add exam start-->
 <?php
 if(@$_GET['q']==4 && !(@$_GET['step']) ) {
 echo ' 
 <div class="row">
-<span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Quiz Details</b></span><br /><br />
+<span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter exam details</b></span><br /><br />
  <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action="update.php?q=addquiz"  method="POST">
 <fieldset>
 
@@ -218,7 +219,7 @@ echo '
 <div class="form-group">
   <label class="col-md-12 control-label" for="name"></label>  
   <div class="col-md-12">
-  <input id="name" name="name" placeholder="Enter Quiz title" class="form-control input-md" type="text">
+  <input id="name" name="name" placeholder="Enter exam title" class="form-control input-md" type="text">
     
   </div>
 </div>
@@ -284,9 +285,9 @@ echo '
 
 }
 ?>
-<!--add quiz end-->
+<!--add exam end-->
 
-<!--add quiz step2 start-->
+<!--add exam step2 start-->
 <?php
 if(@$_GET['q']==4 && (@$_GET['step'])==2 ) {
 echo ' 
@@ -360,14 +361,14 @@ echo '<div class="form-group">
 
 
 }
-?><!--add quiz step 2 end-->
+?><!--add exam step 2 end-->
 
-<!--remove quiz-->
+<!--remove exam-->
 <?php if(@$_GET['q']==5) {
 
 $result = mysqli_query($con,"SELECT * FROM quiz ORDER BY date DESC") or die('Error');
 echo  '<div class="panel"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>Time limit</b></td><td></td></tr>';
+<tr><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>Time limit</b></td><td class="pull-right"><b>Remove exam</b></td><td></td></tr>';
 $c=1;
 while($row = mysqli_fetch_array($result)) {
 	$title = $row['title'];
